@@ -4,7 +4,6 @@ var tasks = [];
       var taskDate = prompt("Enter your due date : ", "your due date here");
       var newTask = new task(taskName, taskDate, 1);
       tasks.push(newTask);
-      //document.write("You have entered a task : " + newTask.name + " due on: " + newTask.due);
       printSort(tasks);
    }
 function task(name, due, weight) {

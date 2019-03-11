@@ -1,0 +1,141 @@
+/* Global */
+* {
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.4fr 1.8fr 0.7fr;
+    grid-template-rows: 0.3fr 1.5fr 1fr;
+    grid-template-areas: 
+    "title header add-task" 
+    "tasks calendar tasks-to-do" 
+    "tasks something tasks-to-do";
+  }
+  
+.title { 
+    grid-area: title; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #539596;
+    color: white;
+    font-size: 32px;
+}
+
+.title:hover {
+    background-color: rgb(129, 230, 208);
+}
+  
+.tasks { 
+    grid-area: tasks; 
+    background: #3F525F;
+    color: white;
+}
+
+.tasks h1 {
+    padding-top: 15px;
+    text-align: center
+}
+  
+.header { 
+    grid-area: header; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #7FC3C7;
+    color: white;
+}
+
+.user {
+    padding-right: 100px;
+    position: relative;
+}
+
+.search-box {
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+}
+
+.search-btn {
+    color: #51D2B7;;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 240px;
+    padding: 0 6px;
+
+}
+  
+.add-task { 
+    grid-area: add-task; 
+    background: #539596;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-btn{
+    color: #494949;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #fff;
+    padding: 20px;
+    border: 4px solid #494949;
+    border-radius: 6px;
+}
+
+.add-task-btn:hover {
+    color: #fff;
+    background: #494949;
+    border-color: #494949;
+    transition: all 0.4s ease 0s;
+}
+  
+.calendar { 
+    grid-area: calendar; 
+    background-color: rgb(184, 181, 181);
+}
+  
+.tasks-to-do { 
+    grid-area: tasks-to-do; 
+    background: #3F525F;
+    text-align: center;
+    color: white;
+}
+
+.tasks-to-do h1 {
+    padding-top: 15px;
+}
+  
+.something { 
+    grid-area: something; 
+    background: #7FC3C7;
+}
+
+  

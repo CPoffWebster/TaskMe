@@ -1,0 +1,74 @@
+<!-- 
+    TaskMe: Task manager app that will sort tasks by importance and recommend to
+            user what tasks they should complete first
+
+    
+    Dependencies: FullCalender API, Jquery, Moment
+
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Links and Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Calendar -->
+    <link rel='stylesheet' href='fullcalendar.css' />
+    <script src='node_modules/jquery/dist/jquery.min.js'></script>
+    <script src='node_modules/moment/min/moment.min.js'></script>
+    <script src='fullcalendar.js'></script>
+    <script src="app.js"></script>
+    <!-- Theme -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/dark-hive/jquery-ui.css">
+
+    <title>TaskMe</title>
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="title">TaskMe</div>
+        <div class="tasks">
+            <h1>My Tasks</h1>
+            <ul>
+                <li>hi</li>
+                <li>hi</li>
+                <li>hi</li>
+            </ul>
+        </div>
+        <div class="header">
+            <h1 class="user">Trevor</h1>
+            <div class="search-box">
+                <input type="text" name='' placeholder="Search tasks..." class='search-txt'>
+                <a href="#" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </div>
+        <div class="add-task">
+            <div class="add-task-div">
+                <a class='add-task-btn' href="#">Add Task</a>
+            </div>
+        </div>
+        <div id="calendar"></div>
+        <div class="tasks-to-do">
+            <h1>Tasks to Do</h1>
+        </div>
+        <div class="something"></div>
+    </div>
+
+</body>
+
+</html>

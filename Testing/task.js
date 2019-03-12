@@ -11,7 +11,7 @@ var tasks = [];
       //call method to sort and print tasks to console
       printSort(tasks);
    }
-
+// HELLO THIS IS A RANDOM TEST INPUT
 //task object
 function task(name, due, weight) {
             this.name = name;

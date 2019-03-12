@@ -1,28 +1,35 @@
 <!DOCTYPE HTML>
 <html>
-   <head>
-      <script src="task.js"></script>
-      </script>
-   </head>
 
-   <body>
-      <p>New Task</p>
+<head>
+   <link rel="stylesheet" href="styles.css">
+   <title>TaskMeCard</title>
+</head>
+
+<body>
+   <div class="wrapper">
+      <h1>New Task</h1>
       <form>
-         Task Name: <br>
-         <input type = "text" id = "TaskName" value = "" /><br><br>
+         <h4>Task Name:</h4>
+         <input type="text" placeholder="Task" id="taskName" value="" />
 
-         Due Date: <br>
-         <input type="date" id="DueDate" value=""><br><br>
+         <h4>Due Date</h4>
+         <input type="date" id="dueDate" value="">
 
-         Difficulty: <br>
-         1 <input type = "range" name = "Difficulty"/> 10 <br><br>
+         <h4>Difficulty</h4>
+         <span>1</span> <input type="range" id="difficulty" /> <span>10</span>
 
-         Expected Length: <br>
-         Hours: <input type = "number" Name = "Hours" min = "0" max = "100"/>
-         Minutes: <input type = "number" Name = "Minutes" min = "0" max = "60"/><br><br>
-
-        <br>
-         <input type = "button" value = "Done" onclick = "getValue();" />
+         <h4>Expectect Length</h4>
+         <h5>Hours</h5>
+         <input type="number" class="hours" min="0" max="100" />
+         <h5>Minutes</h5>
+         <input type="number" class="minutes" min="0" max="60" />
+         <br>
+         <input type="button" value="Done" onclick="getValue();" />
       </form>
-   </body>
+   </div>
+
+   <script src="task.js"></script>
+</body>
+
 </html>

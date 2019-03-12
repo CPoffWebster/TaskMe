@@ -6,14 +6,23 @@
    </head>
 
    <body>
-      <p>Click the following button to add a task: </p>
+      <p>New Task</p>
       <form>
          Task Name: <br>
-         <input type = "text" value = "" /><br><br>
-         
+         <input type = "text" id = "TaskName" value = "" /><br><br>
+
+         Due Date: <br>
+         <input type="date" id="DueDate" value=""><br><br>
+
+         Difficulty: <br>
+         1 <input type = "range" name = "Difficulty"/> 10 <br><br>
+
+         Expected Length: <br>
+         Hours: <input type = "number" Name = "Hours" min = "0" max = "100"/>
+         Minutes: <input type = "number" Name = "Minutes" min = "0" max = "60"/><br><br>
 
         <br>
-         <input type = "Done" value = "Add Task" onclick = "getValue();" />
+         <input type = "button" value = "Done" onclick = "getValue();" />
       </form>
    </body>
 </html>

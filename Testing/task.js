@@ -4,7 +4,7 @@ let tasks = [];
 function getValue() {
   let name = document.getElementById("taskName").value;
   let dueDate = document.getElementById("dueDate").value;
-  let difficulty = document.getElementById("difficulty").value;
+  let difficulty = (document.getElementById("difficulty").value) / 10;
   let hours = document.querySelector(".hours").value;
   let minutes = document.querySelector(".minutes").value;
   //make new tasks with name, date and default weight, 1
@@ -12,7 +12,7 @@ function getValue() {
   //push new task onto array
   tasks.push(newTask);
   //call method to sort and print tasks to console
-  printSort(tasks);
+  printSort(tasks, 3);
 }
 
 //task object
@@ -28,21 +28,33 @@ function Task(name, due, difficulty, hours, minutes) {
 function sortTasks(array, compareType) {
   this.array = array;
   switch (compareType) {
-    case 1:
+      case 1:
       array.sort(function(a, b) {
-        return a.name.localeCompare(b.name);
+          return a.name.localeCompare(b.name);
       });
       break;
 
-    case 2:
+      case 2:
       array.sort(function(a, b) {
-        return b.due - a.due;
+          return b.due - a.due;
       });
       break;
 
-    case 3:
+      case 3:
       array.sort(function(a, b) {
-        return b.difficulty - a.difficulty;
+          return b.difficulty - a.difficulty;
+      });
+      break;
+
+      case 4:
+      array.sort(function(a, b) {
+          if (b.hours - a.hours != 0) {
+              return b.hours - a.hours;
+          }
+          else {
+              return b.minutes - a.hours;
+          }
+
       });
       break;
 
@@ -53,8 +65,8 @@ function sortTasks(array, compareType) {
   }
 }
 //sorts tasks and prints them to console
-function printSort(array) {
+function printSort(array, sortType) {
   this.array = array;
-  sortTasks(array, 2);
+  sortTasks(array, sortType);
   console.log(array);
 }

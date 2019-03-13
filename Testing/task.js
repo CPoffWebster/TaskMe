@@ -4,15 +4,15 @@ let tasks = [];
 function getValue() {
   let name = document.getElementById("taskName").value;
   let dueDate = new Date(document.getElementById("dueDate").value);
-  let difficulty = (document.getElementById("difficulty").value) / 10;
+  let urgency = (document.getElementById("urgency").value) / 10;
   let hours = document.querySelector(".hours").value;
   let minutes = document.querySelector(".minutes").value;
 
   if (isNaN(Date.parse(dueDate))) {
       throw "Invalid Date, needs to be in format: mm/dd/yyyy";
   }
-  //make new tasks with name, date, difficulty, and hours/minutes to completion
-  let newTask = new Task(name, dueDate, difficulty, hours, minutes);
+  //make new tasks with name, date, urgency, and hours/minutes to completion
+  let newTask = new Task(name, dueDate, urgency, hours, minutes);
   //push new task onto array
   tasks.push(newTask);
   //call method to sort and print tasks to console
@@ -23,16 +23,16 @@ function getValue() {
 function clearValues() {
     document.getElementById("taskName").value = "";
     document.getElementById("dueDate").value = "";
-    document.getElementById("difficulty").value = "";
+    document.getElementById("urgency").value = "";
     document.querySelector(".hours").value = "";
     document.querySelector(".minutes").value = "";
 }
 
 //task object
-function Task(name, due, difficulty, hours, minutes) {
+function Task(name, due, urgency, hours, minutes) {
   this.name = name;
   this.due = due;
-  this.difficulty = difficulty;
+  this.urgency = urgency;
   this.hours = hours;
   this.minutes = minutes;
 }
@@ -55,7 +55,7 @@ function sortTasks(array, compareType) {
 
       case 3:
       array.sort(function(a, b) {
-          return b.difficulty - a.difficulty;
+          return b.urgency - a.urgency;
       });
       break;
 

@@ -8,7 +8,7 @@ $(function () {
             center: '.',
             right: 'title',
         },
-        defaultView: 'agendaWeek',
+        defaultView: 'agendaWeek, month'
         contentHeight: 600,
         allDaySlot: false,
         selectable: true,

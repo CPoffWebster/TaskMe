@@ -13,6 +13,15 @@ function getValue() {
   tasks.push(newTask);
   //call method to sort and print tasks to console
   printSort(tasks, 3);
+  clearValues();
+}
+
+function clearValues() {
+    document.getElementById("taskName").value = "";
+    document.getElementById("dueDate").value = "";
+    document.getElementById("difficulty").value = "";
+    document.querySelector(".hours").value = "";
+    document.querySelector(".minutes").value = "";
 }
 
 //task object

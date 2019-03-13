@@ -15,10 +15,11 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: 0.4fr 1.6fr;
-    grid-template-rows: 0.3fr 1.7fr;
+    grid-template-rows: 0.3fr 2.4fr 0.3fr;
     grid-template-areas:
         "name header"
-        "tasks calendar";
+        "tasks calendar"
+        "sort-button calendar";
 }
 
 .name {
@@ -39,6 +40,10 @@ body {
 
 .header {
     grid-area: header;
+}
+
+.sort-button {
+    grid-area: sort-button;
 }
 
 .add-task {

@@ -16,11 +16,16 @@ body {
     display: grid;
     grid-template-columns: 0.4fr 1.6fr;
     grid-template-rows: 0.3fr 1.7fr;
-    grid-template-areas: "button header""tasks calendar";
+    grid-template-areas:
+        "name header"
+        "tasks calendar";
 }
 
-.button {
-    grid-area: button;
+.name {
+    grid-area: name;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tasks {
@@ -35,7 +40,6 @@ body {
 .header {
     grid-area: header;
 }
-
 
 .add-task {
     grid-area: add-task;

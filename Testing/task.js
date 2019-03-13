@@ -3,16 +3,20 @@ let tasks = [];
 //function to get information about task from user
 function getValue() {
   let name = document.getElementById("taskName").value;
-  let dueDate = document.getElementById("dueDate").value;
+  let dueDate = new Date(document.getElementById("dueDate").value);
   let difficulty = (document.getElementById("difficulty").value) / 10;
   let hours = document.querySelector(".hours").value;
   let minutes = document.querySelector(".minutes").value;
-  //make new tasks with name, date and default weight, 1
+
+  if (isNaN(Date.parse(dueDate))) {
+      throw "Invalid Date, needs to be in format: mm/dd/yyyy";
+  }
+  //make new tasks with name, date, difficulty, and hours/minutes to completion
   let newTask = new Task(name, dueDate, difficulty, hours, minutes);
   //push new task onto array
   tasks.push(newTask);
   //call method to sort and print tasks to console
-  printSort(tasks, 3);
+  printSort(tasks, 2);
   clearValues();
 }
 
@@ -45,7 +49,7 @@ function sortTasks(array, compareType) {
 
       case 2:
       array.sort(function(a, b) {
-          return b.due - a.due;
+          return b.due.getTime() > a.due.getTime();
       });
       break;
 

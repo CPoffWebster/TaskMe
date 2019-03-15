@@ -68,7 +68,7 @@
 
 
                 <div class="wrapper">
-                   <h1>New Task</h1>
+                   <h1>Add Task</h1>
                    <br>
                    <form>
                       <h4>Add Name:</h4>
@@ -84,8 +84,8 @@
                       <h8>Hours</h8> <input type="number" placeholder="0" class="hours" min="0" max="100" />
                       <h8>Minutes</h8><input type="number" placeholder="0" class="minutes" min="0" max="60" />
                       <br><br>
-                      <input type="button" value="Done" onclick="getValue();" />
-                      <input type="button" value="Delete" onclick="deleteTask();" />
+                      <input class = "doneBtn" type="button" value="Done" onclick="getValue();" />
+                      <input class = "deleteBtn" type="button" value="Delete" onclick="clearValues();" />
                    </form>
                 </div>
 
@@ -121,7 +121,7 @@
         </div>
       </div>
     </div>
-
+    <script src="task.js"></script>
     <script src="app2.js"></script>
   </body>
 </html>

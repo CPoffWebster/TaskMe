@@ -1,8 +1,8 @@
-<!-- 
+<!--
     TaskMe: Task manager app that will sort tasks by importance and recommend to
             user what tasks they should complete first
 
-    
+
     Dependencies: FullCalender API, Jquery, Moment
 
 
@@ -49,7 +49,19 @@
     <div class="grid-container">
       <div class="tasks">
         <div class="add-task">
-          <a class="add-task-btn" href="#">Add Task</a>
+          <!-- Trigger/Open The Modal -->
+          <div class="myBtn">New Task</div>
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Some text in the Modal..</p>
+            </div>
+
+          </div>
         </div>
 
         <h1>My Tasks</h1>

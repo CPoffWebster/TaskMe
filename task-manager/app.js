@@ -18,3 +18,9 @@ $(function () {
     })
 
 });
+
+let button = document.querySelector(".add-task");
+
+document.addEventListener("click", function () {
+    console.log("hi");
+})

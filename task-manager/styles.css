@@ -163,6 +163,40 @@ body {
   padding: 2px 16px;
 }
 
+.doneBtn {
+  color: #494949;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #fff;
+  padding: 2px;
+  border: 2px solid #494949;
+  border-radius: 3px;
+}
+
+.doneBtn:hover {
+  color: #fff;
+  background: #494949;
+  border-color: #494949;
+  transition: all 0.2s ease 0s;
+}
+
+.deleteBtn {
+  color: #494949;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #fff;
+  padding: 2px;
+  border: 2px solid #494949;
+  border-radius: 3px;
+}
+
+.deleteBtn:hover {
+  color: #fff;
+  background: #494949;
+  border-color: #494949;
+  transition: all 0.2s ease 0s;
+}
+
 .modal-footer {
   padding: 2px 16px;
   background-color: #c0eff5;

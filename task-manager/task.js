@@ -1,5 +1,3 @@
-
-
 //array to hold task objects
 let tasks = [];
 //function to get information about task from user
@@ -14,7 +12,7 @@ function getValue() {
   let minutes = document.querySelector(".minutes").value;
 
   if (isNaN(Date.parse(dueDate))) {
-      throw "Invalid Date, needs to be in format: mm/dd/yyyy";
+    throw "Invalid Date, needs to be in format: mm/dd/yyyy";
   }
   //make new tasks with name, date, urgency, and hours/minutes to completion
   let newTask = new Task(name, dueDate, urgency, hours, minutes);
@@ -26,11 +24,11 @@ function getValue() {
 }
 
 function clearValues() {
-    document.getElementById("taskName").value = "";
-    document.getElementById("dueDate").value = "";
-    document.getElementById("urgency").value = "";
-    document.querySelector(".hours").value = "";
-    document.querySelector(".minutes").value = "";
+  document.getElementById("taskName").value = "";
+  document.getElementById("dueDate").value = "";
+  document.getElementById("urgency").value = "";
+  document.querySelector(".hours").value = "";
+  document.querySelector(".minutes").value = "";
 }
 
 //task object
@@ -46,38 +44,37 @@ function Task(name, due, urgency, hours, minutes) {
 function sortTasks(array, compareType) {
   this.array = array;
   switch (compareType) {
-      case 1:
-      array.sort(function(a, b) {
-          return a.name.localeCompare(b.name);
+    case 1:
+      array.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
       });
       break;
 
-      case 2:
-      array.sort(function(a, b) {
-          return b.due.getTime() > a.due.getTime();
+    case 2:
+      array.sort(function (a, b) {
+        return b.due.getTime() > a.due.getTime();
       });
       break;
 
-      case 3:
-      array.sort(function(a, b) {
-          return b.urgency - a.urgency;
+    case 3:
+      array.sort(function (a, b) {
+        return b.urgency - a.urgency;
       });
       break;
 
-      case 4:
-      array.sort(function(a, b) {
-          if (b.hours - a.hours != 0) {
-              return b.hours - a.hours;
-          }
-          else {
-              return b.minutes - a.hours;
-          }
+    case 4:
+      array.sort(function (a, b) {
+        if (b.hours - a.hours != 0) {
+          return b.hours - a.hours;
+        } else {
+          return b.minutes - a.hours;
+        }
 
       });
       break;
 
     default:
-      array.sort(function(a, b) {
+      array.sort(function (a, b) {
         return a.name.localeCompare(b.name);
       });
   }

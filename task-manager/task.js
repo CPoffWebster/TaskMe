@@ -5,6 +5,9 @@ let tasks = [];
 //function to get information about task from user
 function getValue() {
   let name = document.getElementById("taskName").value;
+  if(isNaN(Date.parse(name))){
+    alert("I am an alert box!");
+  }
   let dueDate = new Date(document.getElementById("dueDate").value);
   let urgency = (document.getElementById("urgency").value) / 10;
   let hours = document.querySelector(".hours").value;

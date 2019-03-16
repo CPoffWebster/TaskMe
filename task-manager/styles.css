@@ -38,11 +38,16 @@ body {
 }
 
 .tasks-list {
-    list-style: none;
+  list-style: none;
 }
 
 .calendar-div {
   grid-area: calendar;
+}
+
+.calendar {
+  grid-area: calendar;
+  background-color: rgb(184, 181, 181);
 }
 
 .header {
@@ -77,11 +82,6 @@ body {
   background: #494949;
   border-color: #494949;
   transition: all 0.4s ease 0s;
-}
-
-.calendar {
-  grid-area: calendar;
-  background-color: rgb(184, 181, 181);
 }
 
 /* Card */

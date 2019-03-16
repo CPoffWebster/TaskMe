@@ -4,10 +4,6 @@
 
 
     Dependencies: FullCalender API, Jquery, Moment
-
-
-
-    CHANGE CALENDAR THEME TO FLICK
  -->
 
 <!DOCTYPE html>
@@ -62,37 +58,30 @@
             <div class="modal-content">
               <div class="modal-header">
                 <span class="close">&times;</span>
-                <!--<h2>Modal Header</h2>-->
+                <!--Modal Header-->
               </div>
               <div class="modal-body">
-
-
                 <div class="wrapper">
-                   <h1>Add Task</h1>
-                   <br>
-                   <form>
-                      <h4>Add Name:</h4>
-                      <input type="text" placeholder="Task" id="taskName" value="" />
-                      <br><br>
-                      <h4>Due Date</h4>
-                      <input type="date" placeholder="mm/dd/yyyy" id="dueDate" value="">
-                      <br><br>
-                      <h4>Urgency</h4>
-                      <span>1</span> <input type="range" id="urgency" /> <span>10</span>
-                      <br><br>
-                      <h4>Expectect Length</h4>
-                      <h8>Hours</h8> <input type="number" placeholder="0" class="hours" min="0" max="100" />
-                      <h8>Minutes</h8><input type="number" placeholder="0" class="minutes" min="0" max="60" />
-                      <br><br>
-                      <input class = "doneBtn" type="button" value="Done" onclick="getValue();" />
-                      <input class = "deleteBtn" type="button" value="Delete" onclick="clearValues();" />
-                   </form>
+                  <h1>Add Task</h1>
+                  <form>
+                    <h4>Add Name:</h4>
+                    <input type="text" placeholder="Task" id="taskName" value=""/>
+                    <h4>Due Date</h4>
+                    <input type="date" placeholder="mm/dd/yyyy" id="dueDate" value=""/>
+                    <h4>Urgency</h4>
+                    <span>1</span> <input type="range" id="urgency"/> <span>10</span>
+                    <h4>Expectect Length</h4>
+                    <h8>Hours</h8>
+                    <input type="number" placeholder="0" class="hours" min="0" max="100"/>
+                    <h8>Minutes</h8>
+                    <input type="number"placeholder="0" class="minutes" min="0" max="60"/>
+                    <input class="doneBtn" type="button" value="Done" onclick="getValue();"/>
+                    <input class="deleteBtn" type="button" value="Delete" onclick="clearValues();"/>
+                  </form>
                 </div>
-
-
               </div>
               <div class="modal-footer">
-                <!--<h3>Modal Footer</h3>-->
+                <!-- Modal Footer -->
               </div>
             </div>
           </div>
@@ -100,10 +89,10 @@
         </div>
 
         <h1>My Tasks</h1>
-        <ul>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
+        <ul class='tasks-list'>
+          <li>Task 1</li>
+          <li>Task 2</li>
+          <li>Task 3</li>
         </ul>
       </div>
 

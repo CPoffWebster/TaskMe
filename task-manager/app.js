@@ -9,7 +9,7 @@ $(function () {
             right: 'title',
         },
         defaultView: 'agendaWeek',
-        contentHeight: 600,
+        contentHeight: 500,
         allDaySlot: false,
         selectable: true,
         themeSystem: 'jquery-ui',

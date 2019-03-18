@@ -48,7 +48,7 @@
       <div class="tasks">
         <div class="add-task-div">
           <div class="add-task">
-            <a class="add-task-btn" onClick = "hideNameWarning();" href="#">Add Task</a>
+            <a class="add-task-btn" href="#">Add Task</a>
           </div>
 
           <!-- HIDDEN WITH CSS -->
@@ -63,17 +63,17 @@
               <div class="modal-body">
                 <div class="wrapper">
                   <h1>Add Task</h1>
-                  <form>
+                  <form class='form'> 
                     <h4>Task Name:</h4>
                     <input type="text" placeholder="Task" id="taskName" value=""/>
-                    <div class = "noName">
+                    <!-- <div class = "error">
                       <p><font size="3" color="red">Name Required.</font></p>
-                    </div>
+                    </div> -->
                     <h4>Due Date</h4>
                     <input type="date" placeholder="mm/dd/yyyy" id="dueDate" value=""/>
-                    <div class = "noName">
+                    <!-- <div class = "error">
                       <p><font size="3" color="red">Date Required.</font></p>
-                    </div>
+                    </div> -->
                     <h4>Urgency</h4>
                     <span>1</span> <input type="range" id="urgency"/> <span>10</span>
 

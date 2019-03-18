@@ -2,22 +2,14 @@
 let tasks = [];
 let list = document.querySelector(".tasks-list");
 
-
-
 //function to get information about task from user
 function getValue() {
   let name = document.getElementById("taskName").value;
-  if(isNaN(Date.parse(name))){
-    alert("I am an alert box!");
-  }
   let dueDate = new Date(document.getElementById("dueDate").value);
   let urgency = (document.getElementById("urgency").value) / 10;
   let hours = document.querySelector(".hours").value;
   let minutes = document.querySelector(".minutes").value;
 
-  if (isNaN(Date.parse(dueDate))) {
-    throw "Invalid Date, needs to be in format: mm/dd/yyyy";
-  }
   //make new tasks with name, date, urgency, and hours/minutes to completion
   let newTask = new Task(name, dueDate, urgency, hours, minutes);
   //push new task onto array
@@ -30,6 +22,14 @@ function getValue() {
   printSort(tasks, 2);
   clearValues();
 }
+
+// function displayError(div){
+//   const errorDiv = document.createElement('div');
+//   errorDiv.className = 'error';
+//   errorDiv.innerHTML = '<p>Name Required.</p>'
+//   div.appendChild(errorDiv);
+//   console.log('working');
+// }
 
 // clear values in task card
 function clearValues() {
@@ -94,3 +94,4 @@ function printSort(array, sortType) {
   sortTasks(array, sortType);
   console.log(array);
 }
+

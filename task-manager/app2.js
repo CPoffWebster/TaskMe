@@ -29,12 +29,12 @@ window.addEventListener('click', function (e) {
         //modal.style.display = 'none';
     }
 
-// When the presses ESCAPE, close the modal
-window.onkeydown = function(evt) {
-    evt = evt || window.event;
-    if (evt.keyCode == 27) {
-        modal.style.display = 'none';
-    }
-};
+    // When the presses ESCAPE, close the modal
+    window.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            modal.style.display = 'none';
+        }
+    };
 });
 

@@ -1,16 +1,8 @@
-// Get the modal
+// Variables
 let modal = document.querySelector('.modal');
-
-// Get the button that opens the modal
 let openBtn = document.querySelector(".add-task");
-
-// Get the <span> element that closes the modal
 let span = document.querySelector(".close")
-
-// Get the button that closes the modal (done AND delete)
 let doneBtn = document.querySelector(".doneBtn");
-
-// Get the button that closes the modal (done AND delete)
 let deleteBtn = document.querySelector(".deleteBtn");
 
 // When the user clicks the button, open the modal
@@ -44,4 +36,5 @@ window.onkeydown = function(evt) {
         modal.style.display = 'none';
     }
 };
-})
+});
+

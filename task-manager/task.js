@@ -1,5 +1,9 @@
-//array to hold task objects
+// Variables
 let tasks = [];
+let list = document.querySelector(".tasks-list");
+
+
+
 //function to get information about task from user
 function getValue() {
   let name = document.getElementById("taskName").value;
@@ -18,11 +22,16 @@ function getValue() {
   let newTask = new Task(name, dueDate, urgency, hours, minutes);
   //push new task onto array
   tasks.push(newTask);
+  //add task to list
+  let entry = document.createElement('li');
+  entry.appendChild(document.createTextNode(newTask.name));
+  list.appendChild(entry);
   //call method to sort and print tasks to console
   printSort(tasks, 2);
   clearValues();
 }
 
+// clear values in task card
 function clearValues() {
   document.getElementById("taskName").value = "";
   document.getElementById("dueDate").value = "";

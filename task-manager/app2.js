@@ -44,4 +44,12 @@ window.onkeydown = function(evt) {
         modal.style.display = 'none';
     }
 };
+
+// Hides text
+//function hideNameWarning() {
+  //document.getElementById("noName").style.visibility = "hidden";
+
+
+
+
 })

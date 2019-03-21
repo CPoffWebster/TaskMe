@@ -88,10 +88,18 @@ function sortTasks(array, compareType) {
       });
   }
 }
+
+function deleteTask (task,  array) {
+    var index = array.indexOf(task);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+    //return
+}
+
 //sorts tasks and prints them to console
 function printSort(array, sortType) {
   this.array = array;
   sortTasks(array, sortType);
   console.log(array);
 }
-

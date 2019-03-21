@@ -1,3 +1,4 @@
+
 // Variables
 let tasks = [];
 let list = document.querySelector(".tasks-list");
@@ -9,6 +10,11 @@ function getValue() {
   let urgency = (document.getElementById("urgency").value) / 10;
   let hours = document.querySelector(".hours").value;
   let minutes = document.querySelector(".minutes").value;
+
+  if(name == ''){
+    displayError(document.querySelector(".input-test"));
+    console.log('working');
+  }
 
   //make new tasks with name, date, urgency, and hours/minutes to completion
   let newTask = new Task(name, dueDate, urgency, hours, minutes);
@@ -23,13 +29,13 @@ function getValue() {
   clearValues();
 }
 
-// function displayError(div){
-//   const errorDiv = document.createElement('div');
-//   errorDiv.className = 'error';
-//   errorDiv.innerHTML = '<p>Name Required.</p>'
-//   div.appendChild(errorDiv);
-//   console.log('working');
-// }
+function displayError(div){
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'error';
+  errorDiv.innerHTML = '<p>Name Required.</p>';
+  errorDiv.style.color = 'red';
+  div.appendChild(errorDiv);
+}
 
 // clear values in task card
 function clearValues() {

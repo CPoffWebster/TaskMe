@@ -71,6 +71,10 @@ body {
   align-items: center;
 }
 
+.add-task a {
+  text-decoration: none;
+}
+
 .add-task-btn {
   color: #494949;
   text-transform: uppercase;
@@ -79,6 +83,8 @@ body {
   padding: 20px;
   border-radius: 6px;
 }
+
+
 
 .add-task-btn:hover {
   color: #fff;

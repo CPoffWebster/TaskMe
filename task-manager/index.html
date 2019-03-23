@@ -3,7 +3,7 @@
             user what tasks they should complete first
 
 
-    Dependencies: FullCalender API, Jquery, Moment
+    Dependencies: FullCalender API, Bootstrap
  -->
 
 <!DOCTYPE html>
@@ -13,32 +13,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <!--  -->
     <!-- Links and Stylesheets -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-      crossorigin="anonymous"
-    />
+    <!--  -->
+
+    
+    <!-- Bootstrap + Fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+
+    <!-- FullCalendar Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
-    <!-- Calendar -->
-    <link rel="stylesheet" href="fullcalendar.css" />
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/moment/min/moment.min.js"></script>
-    <script src="fullcalendar.js"></script>
-    <script src="init.js"></script>
-    <!-- Theme -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css"
-    />
+    <link href='core/main.css' rel='stylesheet' />
+    <link href='daygrid/main.css' rel='stylesheet' />
+    <link href='timegrid/main.css' rel='stylesheet' />
+    <link href='bootstrap/main.css' rel='stylesheet' />
+    <!-- <link href='theme/agency.css' rel='stylesheet' /> -->
+
+
+
+
+    <!-- FullCalendar Scripts -->
+    <script src='core/main.js'></script>
+    <script src='daygrid/main.js'></script>
+    <script src='timegrid/main.js'></script>
+    <script src='interaction/main.js'></script>
+    <script src='bootstrap/main.js'></script>
+    <!-- <script src="theme/agency.js"></script> -->
+
+
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid' , 'timeGrid', 'interaction', 'bootstrap'],
+          defaultView: 'timeGridWeek',
+          themeSystem: 'standard',
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek',
+          },
+          minTime: "07:00:00",
+          maxTime: "22:00:00",
+          contentHeight: 500,
+          selectable: true,
+          allDaySlot: false,
+          eventStartEditable: true,
+          eventDurationEditable: true,
+          events: [
+            { 
+              title: 'The Title',
+              start: '2019-03-22T12:00:00',
+              end: '2019-03-22T13:00:00',
+            }
+          ],
+        });
+
+        calendar.render();
+      });
+
+    </script>
+
+
 
     <title>TaskMe</title>
   </head>

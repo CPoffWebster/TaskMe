@@ -4,6 +4,7 @@ let openBtn = document.querySelector(".add-task");
 let span = document.querySelector(".close")
 let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
+let task = document.querySelector(".tasks-list");
 
 // When the user clicks the button, open the modal
 openBtn.addEventListener("click", function () {
@@ -23,6 +24,12 @@ span.addEventListener("click", function () {
     modal.style.display = 'none';
 })
 
+// When the user clicks on the task section get task?
+task.addEventListener("click", function () {
+    deleteTaskHTML();
+    //modal.style.display = "block";
+})
+
 // When the user clicks anywhere outside of the modal, close it
 window.addEventListener('click', function (e) {
     if (e.target == modal) {
@@ -37,4 +44,3 @@ window.addEventListener('click', function (e) {
         }
     };
 });
-

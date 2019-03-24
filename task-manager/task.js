@@ -1,6 +1,7 @@
 
 // Variables
 let tasks = [];
+let tasksNode = [];
 let list = document.querySelector(".tasks-list");
 
 //function to get information about task from user
@@ -22,11 +23,12 @@ function getValue() {
   tasks.push(newTask);
   //add task to list
   let entry = document.createElement('li');
-  entry.appendChild(document.createTextNode(newTask.name));
+  taskNode = document.createTextNode(newTask.name);
+  tasksNode.push(taskNode);
+  entry.appendChild(taskNode);
   list.appendChild(entry);
-  //call method to sort and print tasks to console
-  printSort(tasks, 2);
   clearValues();
+  console.log(tasks);
 }
 
 function displayError(div){
@@ -55,7 +57,11 @@ function Task(name, due, urgency, hours, minutes) {
   this.minutes = minutes;
 }
 //sort array by different attributes
-//compareType is 1 for sorting by name, 2 for due date, 3 for weight, and default is name
+//compareType is:
+//1 for sorting by name
+//2 for due date
+//3 for weight
+//default is name
 function sortTasks(array, compareType) {
   this.array = array;
   switch (compareType) {
@@ -101,6 +107,16 @@ function deleteTask (task,  array) {
         array.splice(index, 1);
     }
     //return
+}
+
+function deleteTaskPop () {
+    tasks.pop();
+}
+
+function deleteTaskHTML () {
+    elem = tasksNode.pop();
+    elem.parentNode.removeChild(elem);
+    deleteTaskPop();
 }
 
 //sorts tasks and prints them to console

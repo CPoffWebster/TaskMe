@@ -23,8 +23,8 @@ function getValue() {
   tasks.push(newTask);
   //add task to list
   let entry = document.createElement('li');
-  taskNode = document.createTextNode(newTask.name);
-  tasksNode.push(taskNode);
+  let taskNode = document.createTextNode(newTask.name);
+  tasksNode.push(entry);
   entry.appendChild(taskNode);
   list.appendChild(entry);
   clearValues();
@@ -111,6 +111,7 @@ function deleteTask (task,  array) {
 
 function deleteTaskPop () {
     tasks.pop();
+    console.log(tasks);
 }
 
 function deleteTaskHTML () {

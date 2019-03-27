@@ -12,11 +12,6 @@ function getValue() {
   let hours = document.querySelector(".hours").value;
   let minutes = document.querySelector(".minutes").value;
 
-  if(name == ''){
-    displayError(document.querySelector(".input-test"));
-    console.log('working');
-  }
-
   //make new tasks with name, date, urgency, and hours/minutes to completion
   let newTask = new Task(name, dueDate, urgency, hours, minutes);
   //push new task onto array
@@ -56,6 +51,7 @@ function Task(name, due, urgency, hours, minutes) {
   this.hours = hours;
   this.minutes = minutes;
 }
+
 //sort array by different attributes
 //compareType is:
 //1 for sorting by name

@@ -73,8 +73,8 @@ function displayCard(){
 
                     <h8>Minutes</h8>
                     <input type="number"placeholder="0" class="minutes" min="0" max="60"/>
-                    <input class="doneBtn" type="button" value="Done" onclick="getValue();"/>
-                    <input class="deleteBtn" type="button" value="Delete" onclick="clearValues();"/>
+                    <input class="doneBtn" type="button" value="Done"/>
+                    <input class="deleteBtn" type="button" value="Delete"/>
                   </form>
                 </div>
               </div>

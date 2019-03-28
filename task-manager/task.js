@@ -22,6 +22,7 @@ function getValue() {
   tasksNode.push(entry);
   entry.appendChild(taskNode);
   list.appendChild(entry);
+  console.log('test');
   clearValues();
   console.log(tasks);
 }
@@ -107,7 +108,6 @@ function deleteTask (task,  array) {
 
 function deleteTaskPop () {
     tasks.pop();
-    console.log(tasks);
 }
 
 function deleteTaskHTML () {

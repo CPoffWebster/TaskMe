@@ -22,7 +22,6 @@ function getValue() {
   tasksNode.push(entry);
   entry.appendChild(taskNode);
   list.appendChild(entry);
-  console.log('test');
   clearValues();
   console.log(tasks);
 }

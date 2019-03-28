@@ -26,13 +26,7 @@ function getValue() {
   console.log(tasks);
 }
 
-function displayError(div){
-  const errorDiv = document.createElement('div');
-  errorDiv.className = 'error';
-  errorDiv.innerHTML = '<p>Name Required.</p>';
-  errorDiv.style.color = 'red';
-  div.appendChild(errorDiv);
-}
+
 
 // clear values in task card
 function clearValues() {
@@ -105,10 +99,13 @@ function deleteTask (task,  array) {
     //return
 }
 
+
+// delete task from array
 function deleteTaskPop () {
     tasks.pop();
 }
 
+// delete task from HTML
 function deleteTaskHTML () {
     elem = tasksNode.pop();
     elem.parentNode.removeChild(elem);

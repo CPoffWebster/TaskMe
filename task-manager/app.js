@@ -4,9 +4,10 @@ let closeBtn = document.querySelector(".close")
 let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
+let task = document.querySelector(".list-display");
 
 let tasks = []; // array of tasks
-let listElements = []; // li elements 
+let listElements = []; // li elements
 
 const ui = new UI();
 
@@ -24,13 +25,13 @@ addTaskBtn.addEventListener("click", function() {
 // When user clicks done, close modal
 doneBtn.addEventListener("click", function () {
 
-    // check fields 
+    // check fields
     // display error if one field is empy
 
     // if(one field or more empty)
         // display error for respective field
     // else
-    
+
     getValue();
     ui.clearValues();
     ui.hideCard();
@@ -47,7 +48,7 @@ closeBtn.addEventListener("click", function () {
 })
 
 // When the user clicks on the task section get task?
-taskList.addEventListener("click", function () {
+task.addEventListener("click", function () {
     ui.deleteTaskFromList();
     deleteTaskPop();
 })
@@ -66,7 +67,7 @@ function getValue() {
     let urgency = (document.getElementById("urgency").value) / 10;
     let hours = document.querySelector(".hours").value;
     let minutes = document.querySelector(".minutes").value;
-  
+
     //make new tasks with name, date, urgency, and hours/minutes to completion
     let newTask = new Task(name, dueDate, urgency, hours, minutes);
     // add to tasks array
@@ -91,19 +92,19 @@ function sortTasks(array, compareType) {
           return a.name.localeCompare(b.name);
         });
         break;
-  
+
       case 2:
         array.sort(function (a, b) {
           return b.due.getTime() > a.due.getTime();
         });
         break;
-  
+
       case 3:
         array.sort(function (a, b) {
           return b.urgency - a.urgency;
         });
         break;
-  
+
       case 4:
         array.sort(function (a, b) {
           if (b.hours - a.hours != 0) {
@@ -111,10 +112,10 @@ function sortTasks(array, compareType) {
           } else {
             return b.minutes - a.hours;
           }
-  
+
         });
         break;
-  
+
       default:
         array.sort(function (a, b) {
           return a.name.localeCompare(b.name);

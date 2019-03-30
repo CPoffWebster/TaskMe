@@ -27,6 +27,10 @@ class UI{
         console.log(listElements);
     }
 
+
+    // 
+    // NO LONGER NEEDED
+    // 
     deleteTaskFromList(){
         let elem = listElements.pop();
         elem.parentNode.removeChild(elem);

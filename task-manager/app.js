@@ -4,6 +4,7 @@ let closeBtn = document.querySelector(".close")
 let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
+let task_item = document.querySelector('.list-display');
 
 let tasks = []; // array of tasks
 let listElements = []; // li elements 
@@ -11,18 +12,21 @@ let listElements = []; // li elements
 const ui = new UI();
 
 
-
 /*********************************************************************************
     EVENT LISTENERS
 **********************************************************************************/
 
-// When the user clicks the button, open the modal
-addTaskBtn.addEventListener("click", function() {
+loadEventListeners();
+
+//load all event listeners
+function loadEventListeners(){
+  // When the user clicks the button, open the modal
+  addTaskBtn.addEventListener("click", function() {
     ui.displayCard();
-})
+  })
 
 // When user clicks done, close modal
-doneBtn.addEventListener("click", function () {
+  doneBtn.addEventListener("click", function () {
 
     // check fields 
     // display error if one field is empy
@@ -34,25 +38,26 @@ doneBtn.addEventListener("click", function () {
     getValue();
     ui.clearValues();
     ui.hideCard();
-})
+  })
 
-// When user clicks delete, close modal
-deleteBtn.addEventListener("click", function () {
+  // When user clicks delete, close modal
+  deleteBtn.addEventListener("click", function () {
     ui.hideCard();
-})
+  })
 
-// When the user clicks on <span> (x), close the modal
-closeBtn.addEventListener("click", function () {
+  // When the user clicks on <span> (x), close the modal
+  closeBtn.addEventListener("click", function () {
     ui.hideCard();
-})
+  })
 
-// When the user clicks on the task section get task?
-taskList.addEventListener("click", function () {
-    ui.deleteTaskFromList();
-    deleteTaskPop();
-})
+  // // When the user clicks on the task section get task?
+  // taskList.addEventListener("click", function () {
+  //     //ui.deleteTaskFromList();
+  //     //deleteTaskPop();
+  // })
 
-
+  taskList.addEventListener('click', deleteTask);
+}
 
 /*********************************************************************************
     FUNCTIONS
@@ -143,4 +148,13 @@ function printSort(array, sortType) {
   this.array = array;
   sortTasks(array, sortType);
   console.log(array);
+}
+
+function deleteTask(e){
+  //console.log(e.target);
+  listElements.pop();
+  e.target.remove();
+  deleteTaskPop();
+  console.log(listElements);
+  console.log(tasks);
 }

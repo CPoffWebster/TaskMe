@@ -44,12 +44,14 @@ body {
 
 .tasks-list {
   list-style: none;
-  text-align: left;
+  text-align: center;
+  color: white;
 }
 
 .list-display {
-  border: 2px solid white;
+  background: black;
   border-radius: 10%;
+  margin-top: 10px;
 }
 
 .calendar-div {

@@ -7,9 +7,5 @@ class Task {
       this.hours = hours;
       this.minutes = minutes;
   }
-
-  deleteTask(){
-      
-  }
   
 }

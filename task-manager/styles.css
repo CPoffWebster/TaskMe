@@ -7,11 +7,29 @@
 /* background: #c0eff5; */
 
 body {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto Slab', serif;
   background: #c0eff5;
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 80px;
+}
+
+/* Introduction */
+
+.introduction {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.intro-header {
+  font-size: 60px;
+}
+
+.intro-p {
+  font-size: 22px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 /* Container */

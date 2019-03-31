@@ -12,10 +12,6 @@ class UI{
         this.taskCard.style.display = 'none';
     }
 
-    displayError(){
-
-    }
-
     addTaskToList(task, list, listElements){
         let entry = document.createElement('li');
         entry.classList.add('list-display');
@@ -42,18 +38,33 @@ class UI{
         document.querySelector(".minutes").value = "";
     }
 
-    nameErrorFunction() {
+
+    /*********************************************************************************
+      Task Card Errors
+    **********************************************************************************/
+
+    // name error call and remove
+    nameError() {
       document.getElementById("nameError").innerHTML = "<span style='color: red;'>Name Required.</span>";
     }
     removeNameError(){
       document.getElementById("nameError").innerHTML = "";
     }
 
-    dateErrorFunction(){
+    // date error call and remove
+    dateError(){
       document.getElementById("dateError").innerHTML = "<span style='color: red;'>Due Date Required.</span>";
     }
     removeDateError(){
       document.getElementById("dateError").innerHTML = "";
+    }
+
+    // time error call and remove
+    timeError(){
+      document.getElementById("timeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
+    }
+    removeTimeError(){
+      document.getElementById("timeError").innerHTML = "";
     }
 
 }

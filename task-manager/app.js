@@ -6,6 +6,7 @@ let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
 let errorNameCall = true;
 let errorDateCall = true;
+let errorTimeCall = true;
 
 let tasks = []; // array of tasks
 let listElements = []; // li elements
@@ -27,28 +28,44 @@ addTaskBtn.addEventListener("click", function() {
 doneBtn.addEventListener("click", function () {
     let name = document.getElementById("taskName").value;
     let date = document.getElementById("dueDate").value;
+    let hours = document.querySelector(".hours").value;
+    let minutes = document.querySelector(".minutes").value;
+    let eitherTime = true;
 
-    if(name == "" || date == ""){
-      if(errorNameCall){
-        ui.nameErrorFunction();
+    // if either hours or minutes is filled in
+    if(hours != "" || minutes != "") eitherTime = false;
+
+    // Display errors if fields are not filled in
+    if(name == "" || date == "" || eitherTime){
+      if(errorNameCall){  // display name error
+        ui.nameError();
         errorNameCall = false;
       }
-      if(errorDateCall){
-        ui.dateErrorFunction();
+      if(errorDateCall){  // display date error
+        ui.dateError();
         errorDateCall = false;
       }
+      if(errorTimeCall){  // display time error
+        ui.timeError();
+        errorDateCall = false;
+      }
+
+      // remove errors individually
       if(name != "") ui.removeNameError();
       if(date != "") ui.removeDateError();
+      if(hours != "" || minutes != "") ui.removeTimeError();
 
     }
-    else{
+    else{ // card is completed without errors, reset card
       getValue();
       ui.clearValues();
       ui.hideCard();
       ui.removeNameError();
       ui.removeDateError();
+      ui.removeTimeError();
       errorNameCall = true;
       errorDateCall = true;
+      errorTimeCall = true;
     }
 })
 

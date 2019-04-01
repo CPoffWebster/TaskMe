@@ -18,7 +18,7 @@ const ui = new UI();
     EVENT LISTENERS
 **********************************************************************************/
 
-loadEventListeners();
+loadEventListeners();S
 
 //load all event listeners
 function loadEventListeners(){
@@ -28,35 +28,54 @@ function loadEventListeners(){
   })
 
 // When user clicks done, close modal
-  doneBtn.addEventListener("click", function () {
+doneBtn.addEventListener("click", function () {
+    let name = document.getElementById("taskName").value;
+    let date = document.getElementById("dueDate").value;
 
-    // check fields
-    // display error if one field is empy
+    if(name == "" || date == ""){
+      if(errorNameCall){
+        ui.nameErrorFunction();
+        errorNameCall = false;
+      }
+      if(errorDateCall){
+        ui.dateErrorFunction();
+        errorDateCall = false;
+      }
+      if(name != "") ui.removeNameError();
+      if(date != "") ui.removeDateError();
 
-    // if(one field or more empty)
-        // display error for respective field
-    // else
+    }
+    else{
+      getValue();
+      ui.clearValues();
+      ui.hideCard();
+      ui.removeNameError();
+      ui.removeDateError();
+      errorNameCall = true;
+      errorDateCall = true;
+    }
+})
 
-    getValue();
+// When user clicks delete, close modal
+deleteBtn.addEventListener("click", function () {
     ui.clearValues();
     ui.hideCard();
-  })
+    deleteBtnAction();
+})
 
-  // When user clicks delete, close modal
-  deleteBtn.addEventListener("click", function () {
-      ui.clearValues();
-      ui.hideCard();
-      deleteBtnAction();
-  })
+// When the user clicks on <span> (x), close the modal
+closeBtn.addEventListener("click", function () {
+    ui.clearValues();
+    ui.hideCard();
+})
 
-  // When the user clicks on <span> (x), close the modal
-  closeBtn.addEventListener("click", function () {
-      ui.clearValues();
-      ui.hideCard();
-  })
+// When the user clicks on the task section get task?
+taskList.addEventListener("click", function () {
+    ui.deleteTaskFromList();
+    deleteTaskPop();
+})
 
-  taskList.addEventListener('click', openTask);
-}
+
 
 /*********************************************************************************
     FUNCTIONS

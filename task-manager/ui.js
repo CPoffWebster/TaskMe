@@ -1,5 +1,5 @@
 class UI{
-    
+
     constructor(){
         this.taskCard = document.querySelector('.modal');
     }
@@ -13,7 +13,7 @@ class UI{
     }
 
     displayError(){
-        
+
     }
 
     addTaskToList(task, list, listElements){
@@ -41,14 +41,19 @@ class UI{
         document.querySelector(".hours").value = "";
         document.querySelector(".minutes").value = "";
     }
-  
 
-    // function displayError(div){
-    //     const errorDiv = document.createElement('div');
-    //     errorDiv.className = 'error';
-    //     errorDiv.innerHTML = '<p>Name Required.</p>';
-    //     errorDiv.style.color = 'red';
-    //     div.appendChild(errorDiv);
-    //   }
+    nameErrorFunction() {
+      document.getElementById("nameError").innerHTML = "<span style='color: red;'>Name Required.</span>";
+    }
+    removeNameError(){
+      document.getElementById("nameError").innerHTML = "";
+    }
+
+    dateErrorFunction(){
+      document.getElementById("dateError").innerHTML = "<span style='color: red;'>Due Date Required.</span>";
+    }
+    removeDateError(){
+      document.getElementById("dateError").innerHTML = "";
+    }
 
 }

@@ -18,7 +18,7 @@ const ui = new UI();
     EVENT LISTENERS
 **********************************************************************************/
 
-loadEventListeners();S
+loadEventListeners();
 
 //load all event listeners
 function loadEventListeners(){

@@ -6,6 +6,7 @@ let closeBtn = document.querySelector(".close")
 let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
+
 //boolean variables
 let errorNameCall = true;
 let errorDateCall = true;
@@ -89,10 +90,11 @@ taskList.addEventListener("click", function () {
     deleteTaskPop();
 })
 
-taskCard.onkeydown = function(evt) {
-    evt = evt || taskCard.event;
+// When the presses ESCAPE, close the modal (task popup)
+window.onkeydown = function(evt) {
+    evt = evt || window.event;
     if (evt.keyCode == 27) {
-        hideCard();
+        ui.hideCard();
     }
 };
 

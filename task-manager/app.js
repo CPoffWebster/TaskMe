@@ -1,12 +1,16 @@
 // Variables
+
+//buttons
 let addTaskBtn = document.querySelector(".add-task-btn");
 let closeBtn = document.querySelector(".close")
 let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
+//boolean variables
 let errorNameCall = true;
 let errorDateCall = true;
 let errorTimeCall = true;
+
 
 let tasks = []; // array of tasks
 let listElements = []; // li elements
@@ -84,6 +88,13 @@ taskList.addEventListener("click", function () {
     ui.deleteTaskFromList();
     deleteTaskPop();
 })
+
+taskCard.onkeydown = function(evt) {
+    evt = evt || taskCard.event;
+    if (evt.keyCode == 27) {
+        hideCard();
+    }
+};
 
 
 

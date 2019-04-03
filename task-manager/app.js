@@ -82,12 +82,15 @@ doneBtn.addEventListener("click", function () {
 
   // When user clicks delete, close modal
   deleteBtn.addEventListener("click", function () {
+    deleteBtnAction();
     ui.hideCard();
+    ui.clearValues();
   })
 
   // When the user clicks on <span> (x), close the modal
   closeBtn.addEventListener("click", function () {
     ui.hideCard();
+    ui.clearValues();
   })
 
 // When the presses ESCAPE, close the modal (task popup)
@@ -95,6 +98,7 @@ window.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
         ui.hideCard();
+        ui.clearValues();
     }
 };
 

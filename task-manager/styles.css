@@ -16,6 +16,21 @@ body {
 
 /* Container */
 
+.introduction {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.intro-header {
+  font-size: 60px;
+}
+
+.intro-p {
+  font-size: 22px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 0.4fr 1.6fr;

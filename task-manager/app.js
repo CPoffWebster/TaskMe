@@ -35,50 +35,50 @@ function loadEventListeners(){
     ui.displayCard();
   })
 
-// When user clicks done, close modal
-doneBtn.addEventListener("click", function () {
-    let name = document.getElementById("taskName").value;
-    let date = document.getElementById("dueDate").value;
-    let hours = document.querySelector(".hours").value;
-    let minutes = document.querySelector(".minutes").value;
-    let eitherTime = true;
+  // When user clicks done, close modal
+  doneBtn.addEventListener("click", function () {
+      let name = document.getElementById("taskName").value;
+      let date = document.getElementById("dueDate").value;
+      let hours = document.querySelector(".hours").value;
+      let minutes = document.querySelector(".minutes").value;
+      let eitherTime = true;
 
-    // if either hours or minutes is filled in
-    if(hours != "" || minutes != "") eitherTime = false;
+      // if either hours or minutes is filled in
+      if(hours != "" || minutes != "") eitherTime = false;
 
-    // Display errors if fields are not filled in
-    if(name == "" || date == "" || eitherTime){
-      if(errorNameCall){  // display name error
-        ui.nameError();
-        errorNameCall = false;
+      // Display errors if fields are not filled in
+      if(name == "" || date == "" || eitherTime){
+        if(errorNameCall){  // display name error
+          ui.nameError();
+          errorNameCall = false;
+        }
+        if(errorDateCall){  // display date error
+          ui.dateError();
+          errorDateCall = false;
+        }
+        if(errorTimeCall){  // display time error
+          ui.timeError();
+          errorDateCall = false;
+        }
+
+        // remove errors individually
+        if(name != "") ui.removeNameError();
+        if(date != "") ui.removeDateError();
+        if(hours != "" || minutes != "") ui.removeTimeError();
+
       }
-      if(errorDateCall){  // display date error
-        ui.dateError();
-        errorDateCall = false;
+      else{ // card is completed without errors, reset card
+        getValue();
+        ui.clearValues();
+        ui.hideCard();
+        ui.removeNameError();
+        ui.removeDateError();
+        ui.removeTimeError();
+        errorNameCall = true;
+        errorDateCall = true;
+        errorTimeCall = true;
       }
-      if(errorTimeCall){  // display time error
-        ui.timeError();
-        errorDateCall = false;
-      }
-
-      // remove errors individually
-      if(name != "") ui.removeNameError();
-      if(date != "") ui.removeDateError();
-      if(hours != "" || minutes != "") ui.removeTimeError();
-
-    }
-    else{ // card is completed without errors, reset card
-      getValue();
-      ui.clearValues();
-      ui.hideCard();
-      ui.removeNameError();
-      ui.removeDateError();
-      ui.removeTimeError();
-      errorNameCall = true;
-      errorDateCall = true;
-      errorTimeCall = true;
-    }
-})
+  })
 
   // When user clicks delete, close modal
   deleteBtn.addEventListener("click", function () {
@@ -93,14 +93,14 @@ doneBtn.addEventListener("click", function () {
     ui.clearValues();
   })
 
-// When the presses ESCAPE, close the modal (task popup)
-window.onkeydown = function(evt) {
-    evt = evt || window.event;
-    if (evt.keyCode == 27) {
-        ui.hideCard();
-        ui.clearValues();
-    }
-};
+  // When the presses ESCAPE, close the modal (task popup)
+  window.onkeydown = function(evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+          ui.hideCard();
+          ui.clearValues();
+      }
+  };
 
   // When the user clicks on <span> (x), close the modal
   closeBtn.addEventListener("click", function () {
@@ -129,7 +129,7 @@ function getValue() {
     // add to tasks array
     tasks.push(newTask);
     // print task array to console
-    console.log(tasks);
+    //console.log(tasks);
     // add task to list
     ui.addTaskToList(newTask, taskList, listElements);
 }
@@ -191,7 +191,7 @@ function sortTasks(array, compareType) {
 }
 
 function deleteTask (task,  array) {
-    var index = array.indexOf(task);
+    let index = array.indexOf(task);
     if (index > -1) {
         array.splice(index, 1);
     }
@@ -199,7 +199,7 @@ function deleteTask (task,  array) {
 }
 
 function searchTask (task,  array) {
-    var index = array.indexOf(task);
+    let index = array.indexOf(task);
     return index;
     //return
 }

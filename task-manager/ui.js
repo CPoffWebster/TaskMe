@@ -12,10 +12,6 @@ class UI{
         this.taskCard.style.display = 'none';
     }
 
-    displayError(){
-
-    }
-
     addTaskToList(task, list, listElements){
         let entry = document.createElement('li');
         entry.classList.add('list-display');

@@ -16,6 +16,8 @@ let errorTimeCall = true;
 
 let tasks = []; // array of tasks
 let listElements = []; // li elements
+let currentTask = new Task();
+let currentTaskElement;
 
 const ui = new UI();
 
@@ -96,8 +98,13 @@ window.onkeydown = function(evt) {
     }
 };
 
+  // When the user clicks on <span> (x), close the modal
+  closeBtn.addEventListener("click", function () {
+      ui.clearValues();
+      ui.hideCard();
+  })
 
-  taskList.addEventListener('click', deleteTask);
+  taskList.addEventListener('click', openTask);
 }
 
 /*********************************************************************************
@@ -121,6 +128,17 @@ function getValue() {
     console.log(tasks);
     // add task to list
     ui.addTaskToList(newTask, taskList, listElements);
+}
+
+function setValue(task) {
+    date = task.due;
+    dateString = (date.getMonth()+1) + "/" + (date.getDate()) + "/" + date.getFullYear();
+    document.getElementById("taskName").value = task.name;
+    document.getElementById("dueDate").value = dateString;//not displaying
+    document.getElementById("urgency").value = task.urgency*10;
+    document.querySelector(".hours").value = task.hours;
+    document.querySelector(".minutes").value = task.minutes;
+    console.log(document.getElementById("dueDate").value);
 }
 
 //sort array by different attributes
@@ -173,15 +191,18 @@ function deleteTask (task,  array) {
     if (index > -1) {
         array.splice(index, 1);
     }
-    //return
+    return index;
 }
 
+function searchTask (task,  array) {
+    var index = array.indexOf(task);
+    return index;
+    //return
+}
 
 // delete task from array
 function deleteTaskPop () {
     tasks.pop();
-    // print to console
-    console.log(tasks);
 }
 
 //sorts tasks and prints them to console
@@ -191,11 +212,22 @@ function printSort(array, sortType) {
   console.log(array);
 }
 
-function deleteTask(e){
-  //console.log(e.target);
-  listElements.pop();
-  e.target.remove();
-  deleteTaskPop();
-  console.log(listElements);
-  console.log(tasks);
+function deleteTaskElement(e){
+    deleteTask(e.target, listElements)
+    e.target.remove();
+}
+
+function openTask(e){
+    taskIndex = searchTask(e.target, listElements);
+    currentTask = tasks[taskIndex];
+    currentTaskElement = e;
+    ui.displayCard();
+    setValue(currentTask);
+}
+
+function deleteBtnAction() {
+    deleteTask(currentTask, tasks);
+    deleteTaskElement(currentTaskElement);
+    console.log(listElements);
+    console.log(tasks);
 }

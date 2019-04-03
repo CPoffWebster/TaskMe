@@ -24,15 +24,6 @@ class UI{
     }
 
 
-    // 
-    // NO LONGER NEEDED
-    // 
-    deleteTaskFromList(){
-        let elem = listElements.pop();
-        elem.parentNode.removeChild(elem);
-        console.log(listElements);
-    }
-
     // clear values in task card
     clearValues() {
         document.getElementById("taskName").value = "";

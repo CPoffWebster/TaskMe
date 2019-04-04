@@ -66,9 +66,14 @@ function loadEventListeners(){
         if(date != "") ui.removeDateError();
         if(hours != "" || minutes != "") ui.removeTimeError();
 
-      } else { 
+      } else {
         // card is completed without errors, reset card
         getValue();
+        taskIndex = searchTask(name, tasks);
+        currentTask = tasks[taskIndex];
+        if(currentTask == null){
+          alert();
+        }
         ui.clearValues();
         ui.hideCard();
         ui.removeNameError();
@@ -123,8 +128,9 @@ function getValue() {
     let urgency = (document.getElementById("urgency").value) / 10;
     let hours = document.querySelector(".hours").value;
     let minutes = document.querySelector(".minutes").value;
+    let editedTask = 0;
 
-    let newTask = new Task(name, dueDate, urgency, hours, minutes);
+    let newTask = new Task(name, dueDate, urgency, hours, minutes, editedTask);
     // add to tasks array
     tasks.push(newTask);
     console.log(tasks);
@@ -221,6 +227,7 @@ function deleteTaskElement(e){
 function openTask(e){
     taskIndex = searchTask(e.target, listElements);
     currentTask = tasks[taskIndex];
+    currentTask.editedTask = 1;
     currentTaskElement = e;
     ui.displayCard();
     setValue(currentTask);

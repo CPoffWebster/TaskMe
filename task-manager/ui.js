@@ -20,7 +20,6 @@ class UI{
         list.appendChild(entry);
         // save li element
         listElements.push(entry);
-        console.log(listElements);
     }
 
 

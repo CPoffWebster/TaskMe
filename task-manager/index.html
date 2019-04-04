@@ -17,7 +17,7 @@
     <!-- Links and Stylesheets -->
     <!--  -->
 
-    
+
     <!-- Bootstrap + Fontawesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
@@ -65,7 +65,7 @@
           eventStartEditable: true,
           eventDurationEditable: true,
           events: [
-            { 
+            {
               title: 'The Title',
               start: '2019-03-22T12:00:00',
               end: '2019-03-22T13:00:00',
@@ -84,19 +84,21 @@
   </head>
 
   <body>
-    <div class="introduction">
-      <h1 class="intro-header">Welcome to TaskMe</h1>
-      <p class="intro-p">
-        Creates an automated calender that you can use to facilitate the 
-        scheduling of your everyday duties.
-      </p>
-      <p class="intro-p">
-        To use, click the "ADD TASK" button to create a task. Enter the 
-        required inputs and then click done. When you create all the tasks
-        you want, click the "SORT ME" button. This will add time slots to the
-        calendar that allocates times to complete your tasks
-      </p>
-    </div>
+
+      <div class="introduction">
+          <h1 class="intro-header">Welcome to TaskMe</h1>
+          <p class="intro-p">
+            Creates an automated calender that you can use to facilitate the
+            scheduling of your everyday duties.
+          </p>
+          <p class="intro-p">
+            To use, click the "ADD TASK" button to create a task. Enter the
+            required inputs and then click done. When you create all the tasks
+            you want, click the "SORT ME" button. This will add time slots to the
+            calendar that allocates times to complete your tasks
+          </p>
+        </div>
+
 
     <div class="grid-container">
       <div class="tasks">
@@ -133,22 +135,28 @@
             <div class="modal-body">
                 <div class="wrapper">
                     <h1>Add Task</h1>
-                    <form class='form'> 
+                    <form class='form'>
                         <h4>Task Name:</h4>
                         <div class="input-test">
                             <input type="text" placeholder="Task" id="taskName" value=""/>
+                            <p id="nameError"></p>
                         </div>
                         <h4>Due Date</h4>
                         <input type="date" placeholder="mm/dd/yyyy" id="dueDate" value=""/>
+                        <p id="dateError"></p>
+
                         <h4>Urgency</h4>
                         <span>1</span> <input type="range" id="urgency"/> <span>10</span>
+                        <br><br>
 
-                        <h4>Expectect Length</h4>
+                        <h4>Expected Time</h4>
                         <h8>Hours</h8>
                         <input type="number" placeholder="0" class="hours" min="0" max="100"/>
 
                         <h8>Minutes</h8>
                         <input type="number"placeholder="0" class="minutes" min="0" max="60"/>
+                        <p id="timeError"></p>
+
                         <input class="doneBtn" type="button" value="Done"/>
                         <input class="deleteBtn" type="button" value="Delete"/>
                     </form>

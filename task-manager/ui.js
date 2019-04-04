@@ -1,5 +1,5 @@
 class UI{
-    
+
     constructor(){
         this.taskCard = document.querySelector('.modal');
     }
@@ -10,10 +10,6 @@ class UI{
 
     hideCard(){
         this.taskCard.style.display = 'none';
-    }
-
-    displayError(){
-        
     }
 
     addTaskToList(task, list, listElements){
@@ -28,15 +24,6 @@ class UI{
     }
 
 
-    // 
-    // NO LONGER NEEDED
-    // 
-    deleteTaskFromList(){
-        let elem = listElements.pop();
-        elem.parentNode.removeChild(elem);
-        console.log(listElements);
-    }
-
     // clear values in task card
     clearValues() {
         document.getElementById("taskName").value = "";
@@ -45,14 +32,34 @@ class UI{
         document.querySelector(".hours").value = "";
         document.querySelector(".minutes").value = "";
     }
-  
 
-    // function displayError(div){
-    //     const errorDiv = document.createElement('div');
-    //     errorDiv.className = 'error';
-    //     errorDiv.innerHTML = '<p>Name Required.</p>';
-    //     errorDiv.style.color = 'red';
-    //     div.appendChild(errorDiv);
-    //   }
+
+    /*********************************************************************************
+      Task Card Errors
+    **********************************************************************************/
+
+    // name error call and remove
+    nameError() {
+      document.getElementById("nameError").innerHTML = "<span style='color: red;'>Name Required.</span>";
+    }
+    removeNameError(){
+      document.getElementById("nameError").innerHTML = "";
+    }
+
+    // date error call and remove
+    dateError(){
+      document.getElementById("dateError").innerHTML = "<span style='color: red;'>Due Date Required.</span>";
+    }
+    removeDateError(){
+      document.getElementById("dateError").innerHTML = "";
+    }
+
+    // time error call and remove
+    timeError(){
+      document.getElementById("timeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
+    }
+    removeTimeError(){
+      document.getElementById("timeError").innerHTML = "";
+    }
 
 }

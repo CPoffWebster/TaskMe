@@ -66,8 +66,8 @@ function loadEventListeners(){
         if(date != "") ui.removeDateError();
         if(hours != "" || minutes != "") ui.removeTimeError();
 
-      }
-      else{ // card is completed without errors, reset card
+      } else { 
+        // card is completed without errors, reset card
         getValue();
         ui.clearValues();
         ui.hideCard();
@@ -102,7 +102,7 @@ function loadEventListeners(){
       }
   };
 
-  // When the user clicks on <span> (x), close the modal
+  // When the user clicks on (x), close the modal
   closeBtn.addEventListener("click", function () {
       ui.clearValues();
       ui.hideCard();
@@ -116,33 +116,28 @@ function loadEventListeners(){
 **********************************************************************************/
 
 
-//get information about task from user, add to tasks array
+// get information about task from user, add to tasks array
 function getValue() {
     let name = document.getElementById("taskName").value;
-    let dueDate = new Date(document.getElementById("dueDate").value);
+    let dueDate = document.getElementById("dueDate").value;
     let urgency = (document.getElementById("urgency").value) / 10;
     let hours = document.querySelector(".hours").value;
     let minutes = document.querySelector(".minutes").value;
 
-    //make new tasks with name, date, urgency, and hours/minutes to completion
     let newTask = new Task(name, dueDate, urgency, hours, minutes);
     // add to tasks array
     tasks.push(newTask);
-    // print task array to console
-    //console.log(tasks);
+    console.log(tasks);
     // add task to list
     ui.addTaskToList(newTask, taskList, listElements);
 }
 
 function setValue(task) {
-    date = task.due;
-    dateString = (date.getMonth()+1) + "/" + (date.getDate()) + "/" + date.getFullYear();
     document.getElementById("taskName").value = task.name;
-    document.getElementById("dueDate").value = dateString;//not displaying
+    document.getElementById("dueDate").value = task.due;
     document.getElementById("urgency").value = task.urgency*10;
     document.querySelector(".hours").value = task.hours;
     document.querySelector(".minutes").value = task.minutes;
-    console.log(document.getElementById("dueDate").value);
 }
 
 //sort array by different attributes
@@ -198,10 +193,10 @@ function deleteTask (task,  array) {
     return index;
 }
 
+// search task in array
 function searchTask (task,  array) {
     let index = array.indexOf(task);
     return index;
-    //return
 }
 
 // delete task from array
@@ -216,11 +211,13 @@ function printSort(array, sortType) {
   console.log(array);
 }
 
+// delete task from list
 function deleteTaskElement(e){
     deleteTask(e.target, listElements)
     e.target.remove();
 }
 
+// open the task card
 function openTask(e){
     taskIndex = searchTask(e.target, listElements);
     currentTask = tasks[taskIndex];
@@ -229,6 +226,7 @@ function openTask(e){
     setValue(currentTask);
 }
 
+// delete the task
 function deleteBtnAction() {
     deleteTask(currentTask, tasks);
     deleteTaskElement(currentTaskElement);

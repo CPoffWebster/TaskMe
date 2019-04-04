@@ -7,6 +7,7 @@ let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
 let task_item = document.querySelector('.list-display');
+let editedTask = false;
 
 //boolean variables
 let errorNameCall = true;
@@ -35,50 +36,53 @@ function loadEventListeners(){
     ui.displayCard();
   })
 
-// When user clicks done, close modal
-doneBtn.addEventListener("click", function () {
-    let name = document.getElementById("taskName").value;
-    let date = document.getElementById("dueDate").value;
-    let hours = document.querySelector(".hours").value;
-    let minutes = document.querySelector(".minutes").value;
-    let eitherTime = true;
+  // When user clicks done, close modal
+  doneBtn.addEventListener("click", function () {
+      let name = document.getElementById("taskName").value;
+      let date = document.getElementById("dueDate").value;
+      let hours = document.querySelector(".hours").value;
+      let minutes = document.querySelector(".minutes").value;
+      let eitherTime = true;
 
-    // if either hours or minutes is filled in
-    if(hours != "" || minutes != "") eitherTime = false;
+      // if either hours or minutes is filled in
+      if(hours != "" || minutes != "") eitherTime = false;
 
-    // Display errors if fields are not filled in
-    if(name == "" || date == "" || eitherTime){
-      if(errorNameCall){  // display name error
-        ui.nameError();
-        errorNameCall = false;
+      // Display errors if fields are not filled in
+      if(name == "" || date == "" || eitherTime){
+        if(errorNameCall){  // display name error
+          ui.nameError();
+          errorNameCall = false;
+        }
+        if(errorDateCall){  // display date error
+          ui.dateError();
+          errorDateCall = false;
+        }
+        if(errorTimeCall){  // display time error
+          ui.timeError();
+          errorDateCall = false;
+        }
+
+        // remove errors individually
+        if(name != "") ui.removeNameError();
+        if(date != "") ui.removeDateError();
+        if(hours != "" || minutes != "") ui.removeTimeError();
+
+      } else {
+        // card is completed without errors, reset card
+        if(!editedTask){
+          getValue();
+        }
+        ui.clearValues();
+        ui.hideCard();
+        ui.removeNameError();
+        ui.removeDateError();
+        ui.removeTimeError();
+        errorNameCall = true;
+        errorDateCall = true;
+        errorTimeCall = true;
+        editedTask = false;
       }
-      if(errorDateCall){  // display date error
-        ui.dateError();
-        errorDateCall = false;
-      }
-      if(errorTimeCall){  // display time error
-        ui.timeError();
-        errorDateCall = false;
-      }
-
-      // remove errors individually
-      if(name != "") ui.removeNameError();
-      if(date != "") ui.removeDateError();
-      if(hours != "" || minutes != "") ui.removeTimeError();
-
-    }
-    else{ // card is completed without errors, reset card
-      getValue();
-      ui.clearValues();
-      ui.hideCard();
-      ui.removeNameError();
-      ui.removeDateError();
-      ui.removeTimeError();
-      errorNameCall = true;
-      errorDateCall = true;
-      errorTimeCall = true;
-    }
-})
+  })
 
   // When user clicks delete, close modal
   deleteBtn.addEventListener("click", function () {
@@ -93,16 +97,16 @@ doneBtn.addEventListener("click", function () {
     ui.clearValues();
   })
 
-// When the presses ESCAPE, close the modal (task popup)
-window.onkeydown = function(evt) {
-    evt = evt || window.event;
-    if (evt.keyCode == 27) {
-        ui.hideCard();
-        ui.clearValues();
-    }
-};
+  // When the presses ESCAPE, close the modal (task popup)
+  window.onkeydown = function(evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+          ui.hideCard();
+          ui.clearValues();
+      }
+  };
 
-  // When the user clicks on <span> (x), close the modal
+  // When the user clicks on (x), close the modal
   closeBtn.addEventListener("click", function () {
       ui.clearValues();
       ui.hideCard();
@@ -116,33 +120,29 @@ window.onkeydown = function(evt) {
 **********************************************************************************/
 
 
-//get information about task from user, add to tasks array
+// get information about task from user, add to tasks array
 function getValue() {
     let name = document.getElementById("taskName").value;
-    let dueDate = new Date(document.getElementById("dueDate").value);
+    let dueDate = document.getElementById("dueDate").value;
     let urgency = (document.getElementById("urgency").value) / 10;
     let hours = document.querySelector(".hours").value;
     let minutes = document.querySelector(".minutes").value;
+    let editedTask = 0;
 
-    //make new tasks with name, date, urgency, and hours/minutes to completion
-    let newTask = new Task(name, dueDate, urgency, hours, minutes);
+    let newTask = new Task(name, dueDate, urgency, hours, minutes, editedTask);
     // add to tasks array
     tasks.push(newTask);
-    // print task array to console
     console.log(tasks);
     // add task to list
     ui.addTaskToList(newTask, taskList, listElements);
 }
 
 function setValue(task) {
-    date = task.due;
-    dateString = (date.getMonth()+1) + "/" + (date.getDate()) + "/" + date.getFullYear();
     document.getElementById("taskName").value = task.name;
-    document.getElementById("dueDate").value = dateString;//not displaying
+    document.getElementById("dueDate").value = task.due;
     document.getElementById("urgency").value = task.urgency*10;
     document.querySelector(".hours").value = task.hours;
     document.querySelector(".minutes").value = task.minutes;
-    console.log(document.getElementById("dueDate").value);
 }
 
 //sort array by different attributes
@@ -191,17 +191,17 @@ function sortTasks(array, compareType) {
 }
 
 function deleteTask (task,  array) {
-    var index = array.indexOf(task);
+    let index = array.indexOf(task);
     if (index > -1) {
         array.splice(index, 1);
     }
     return index;
 }
 
+// search task in array
 function searchTask (task,  array) {
-    var index = array.indexOf(task);
+    let index = array.indexOf(task);
     return index;
-    //return
 }
 
 // delete task from array
@@ -216,19 +216,24 @@ function printSort(array, sortType) {
   console.log(array);
 }
 
+// delete task from list
 function deleteTaskElement(e){
     deleteTask(e.target, listElements)
     e.target.remove();
 }
 
+// open the task card
 function openTask(e){
     taskIndex = searchTask(e.target, listElements);
     currentTask = tasks[taskIndex];
+    currentTask.editedTask = 1;
     currentTaskElement = e;
     ui.displayCard();
     setValue(currentTask);
+    editedTask = true;
 }
 
+// delete the task
 function deleteBtnAction() {
     deleteTask(currentTask, tasks);
     deleteTaskElement(currentTaskElement);

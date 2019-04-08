@@ -46,7 +46,7 @@ class Calendar {
             title: 'busy time',
             start: begin,
             end: end,
-            backgroundColor: "#ff471a",
+            backgroundColor: "#ff471a", //red, but not too red
             });
         }
     }
@@ -54,6 +54,6 @@ class Calendar {
 
 document.addEventListener('DOMContentLoaded', function() {
     const calendarObject = new Calendar();
-    calendarObject.addAvaliableTime("2019-04-09", "07:00", "2019-04-09", "20:00");
-    calendarObject.addBusyTime("2019-04-08", "07:00", "2019-04-08", "20:00");
+    //calendarObject.addAvaliableTime("2019-04-09", "07:00", "2019-04-09", "20:00");
+    //calendarObject.addBusyTime("2019-04-08", "07:00", "2019-04-08", "20:00");
       });

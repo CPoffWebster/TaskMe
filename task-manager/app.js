@@ -7,6 +7,7 @@ let doneBtn = document.querySelector(".doneBtn");
 let deleteBtn = document.querySelector(".deleteBtn");
 let taskList = document.querySelector(".tasks-list");
 let task_item = document.querySelector('.list-display');
+let editedTask = false;
 
 //boolean variables
 let errorNameCall = true;
@@ -66,7 +67,7 @@ function loadEventListeners(){
         if(date != "") ui.removeDateError();
         if(hours != "" || minutes != "") ui.removeTimeError();
 
-      } else { 
+      } else {
         // card is completed without errors, reset card
         getValue();
         ui.clearValues();
@@ -77,6 +78,7 @@ function loadEventListeners(){
         errorNameCall = true;
         errorDateCall = true;
         errorTimeCall = true;
+        editedTask = false;
       }
   })
 
@@ -118,6 +120,10 @@ function loadEventListeners(){
 
 // get information about task from user, add to tasks array
 function getValue() {
+    if(editedTask){
+      deleteBtnAction();
+      editedTask = false;
+    }
     let name = document.getElementById("taskName").value;
     let dueDate = document.getElementById("dueDate").value;
     let urgency = (document.getElementById("urgency").value) / 10;
@@ -224,6 +230,7 @@ function openTask(e){
     currentTaskElement = e;
     ui.displayCard();
     setValue(currentTask);
+    editedTask = true;
 }
 
 // delete the task

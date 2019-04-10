@@ -4,10 +4,9 @@ var calendar;
 
 class Calendar {
     constructor(){
-      //document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        calendarEl = document.getElementById('calendar');
+        
+        calendar = new FullCalendar.Calendar(calendarEl, {
           plugins: [ 'dayGrid' , 'timeGrid', 'interaction', 'bootstrap', 'list', 'googleCalendar' ],
           displayEventTime: false,
           googleCalendarApiKey: 'AIzaSyC6BGMsXygokYtmC8Zz6D79l5kvQMYqE20',
@@ -32,7 +31,6 @@ class Calendar {
           });
 
           calendar.render();
-        //});
     }
     addAvaliableTime(dateBeginning, timeBeginning, dateEnd, timeEnd){
         var begin = new Date(dateBeginning + 'T' + timeBeginning + ':00'); // will be in local time

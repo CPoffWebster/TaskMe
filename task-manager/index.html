@@ -82,7 +82,7 @@
         <div id="calendar"></div>
       </div>
 
-      <div class="sort-button">
+      <div id="sortTaskBtn" class="sort-button">
         <div class="add-task">
           <a class="add-task-btn" href="#">Sort Me</a>
         </div>
@@ -90,42 +90,66 @@
 
         <!-- Task Card -->
         <!-- Hidden with CSS -->
-        <div class='modal'>
+        <div id="taskCard" class='modal'>
           <div class="modal-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
+              <span id="taskClose" class="close">&times;</span>
             </div>
             <div class="modal-body">
-                <div class="wrapper">
-                    <h1>Add Task</h1>
-                    <form class='form'>
-                        <h4>Task Name:</h4>
-                        <div class="input-test">
-                            <input type="text" placeholder="Task" id="taskName" value=""/>
-                            <p id="nameError"></p>
-                        </div>
-                        <h4>Due Date</h4>
-                        <input type="date" placeholder="mm/dd/yyyy" id="dueDate" value=""/>
-                        <p id="dateError"></p>
-
-                        <h4>Urgency</h4>
-                        <span>1</span> <input type="range" id="urgency"/> <span>10</span>
-                        <br><br>
-
-                        <h4>Expected Time</h4>
-                        <h8>Hours</h8>
-                        <input type="number" placeholder="0" class="hours" min="0" max="100"/>
-
-                        <h8>Minutes</h8>
-                        <input type="number"placeholder="0" class="minutes" min="0" max="60"/>
-                        <p id="timeError"></p>
-
-                        <input class="doneBtn" type="button" value="Done"/>
-                        <input class="deleteBtn" type="button" value="Delete"/>
-                    </form>
-                </div>
+              <div class="wrapper">
+                <h1>Add Task</h1>
+                <form class='form'>
+                  <h4>Task Name:</h4>
+                  <div class="input-test">
+                    <input type="text" placeholder="Task" id="taskName" value="" />
+                    <p id="taskNameError"></p>
+                  </div>
+                  <h4>Due Date</h4>
+                  <input type="date" placeholder="mm/dd/yyyy" id="dueDate" value="" />
+                  <p id="taskDateError"></p>
+        
+                  <h4>Urgency</h4>
+                  <span>1</span> <input type="range" id="urgency" /> <span>10</span>
+                  <br><br>
+        
+                  <h4>Expected Time</h4>
+                  <h8>Hours</h8>
+                  <input type="number" placeholder="0" class="hours" min="0" max="100" />
+        
+                  <h8>Minutes</h8>
+                  <input type="number" placeholder="0" class="minutes" min="0" max="60" />
+                  <p id="taskTimeError"></p>
+        
+                  <input id="taskDone" class="doneBtn" type="button" value="Done" />
+                  <input id="taskDelete" class="deleteBtn" type="button" value="Delete" />
+                </form>
+              </div>
             </div>
-
+        
+            <div class="modal-footer"> </div>
+          </div>
+        </div>
+        <div id="scheduleCard" class='modal'>
+          <div class="modal-content">
+            <div class="modal-header">
+              <span id="scheduleClose" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+              <div class="wrapper">
+                <h1>Schedule Time</h1>
+                <form class='form'>
+                  <h4>Date Start</h4>
+                  <input type="datetime-local" placeholder="mm/dd/yyyy hh:mm" id="startDate" value="" />
+                  <p id="startDateError"></p>
+                  <h4>Date End</h4>
+                  <input type="datetime-local" placeholder="mm/dd/yyyy hh:mm" id="endDate" value="" />
+                  <p id="endDateError"></p>
+                  <input id="scheduleDone" class="doneBtn" type="button" value="Done" />
+                  <input id="scheduleDelete" class="deleteBtn" type="button" value="Delete" />
+                </form>
+              </div>
+            </div>
+        
             <div class="modal-footer"> </div>
           </div>
         </div>

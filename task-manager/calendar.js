@@ -29,12 +29,10 @@ class Calendar {
           eventStartEditable: true,
           eventDurationEditable: true,
           });
-
-          calendar.render();
     }
-    addAvaliableTime(dateBeginning, timeBeginning, dateEnd, timeEnd){
-        var begin = new Date(dateBeginning + 'T' + timeBeginning + ':00'); // will be in local time
-        var end = new Date(dateEnd + 'T' + timeEnd + ':00'); // will be in local time
+    addAvaliableTime(dateBeginning, dateEnd){
+        var begin = new Date(dateBeginning + ':00'); // will be in local time
+        var end = new Date(dateEnd + ':00'); // will be in local time
         if (!isNaN(begin.valueOf()) && !isNaN(end.valueOf())) { // valid?
             calendar.addEvent({
             title: 'avaliable time',
@@ -55,10 +53,7 @@ class Calendar {
             });
         }
     }
+    renderCalendar(){
+      calendar.render();
+    }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const calendarObject = new Calendar();
-    //calendarObject.addAvaliableTime("2019-04-09", "07:00", "2019-04-09", "20:00");
-    //calendarObject.addBusyTime("2019-04-08", "07:00", "2019-04-08", "20:00");
-      });

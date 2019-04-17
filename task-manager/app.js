@@ -2,9 +2,13 @@
 
 //buttons
 let addTaskBtn = document.querySelector(".add-task-btn");
-let closeBtn = document.querySelector(".close")
-let doneBtn = document.querySelector(".doneBtn");
-let deleteBtn = document.querySelector(".deleteBtn");
+let taskCloseBtn = document.getElementById("taskClose");
+let taskDoneBtn = document.getElementById("taskDone");
+let taskDeleteBtn = document.getElementById("taskDelete");
+let sortTaskBtn = document.getElementById("sortTaskBtn");
+let scheduleCloseBtn = document.getElementById("scheduleClose");
+let scheduleDoneBtn = document.getElementById("scheduleDone");
+let scheduleDeleteBtn = document.getElementById("scheduleDelete");
 let taskList = document.querySelector(".tasks-list");
 let task_item = document.querySelector('.list-display');
 let editedTask = false;
@@ -21,6 +25,7 @@ let currentTask = new Task();
 let currentTaskElement;
 
 const ui = new UI();
+const calendarObject = new Calendar();
 
 
 /*********************************************************************************
@@ -31,18 +36,31 @@ loadEventListeners();
 
 //load all event listeners
 function loadEventListeners(){
+  document.addEventListener('DOMContentLoaded', function () {
+    calendarObject.renderCalendar();
+    //calendarObject.addAvaliableTime("2019-04-09", "07:00", "2019-04-09", "20:00");
+    //calendarObject.addBusyTime("2019-04-08", "07:00", "2019-04-08", "20:00");
+  });
+
   // When the user clicks the button, open the modal
   addTaskBtn.addEventListener("click", function() {
-    ui.displayCard();
+    ui.displayCard(ui.taskCard);
   })
 
+  // When the user clicks the button, open the modal
+  sortTaskBtn.addEventListener("click", function () {
+    ui.displayCard(ui.scheduleCard);
+  })
+
+
   // When user clicks done, close modal
-  doneBtn.addEventListener("click", function () {
-      let name = document.getElementById("taskName").value;
-      let date = document.getElementById("dueDate").value;
-      let hours = document.querySelector(".hours").value;
-      let minutes = document.querySelector(".minutes").value;
-      let eitherTime = true;
+  taskDoneBtn.addEventListener("click", function () {
+    let name = document.getElementById("taskName").value;
+    let date = document.getElementById("dueDate").value;
+    let hours = document.querySelector(".hours").value;
+    let minutes = document.querySelector(".minutes").value;
+    let eitherTime = true;
+
 
       // if either hours or minutes is filled in
       if(hours != "" || minutes != "") eitherTime = false;
@@ -70,8 +88,8 @@ function loadEventListeners(){
       } else {
         // card is completed without errors, reset card
         getValue();
-        ui.clearValues();
-        ui.hideCard();
+        ui.clearValues("task");
+        ui.hideCard(ui.taskCard);
         ui.removeNameError();
         ui.removeDateError();
         ui.removeTimeError();
@@ -82,32 +100,67 @@ function loadEventListeners(){
       }
   })
 
+  // When user clicks done, close modal
+  scheduleDoneBtn.addEventListener("click", function () {
+    let startDate = document.getElementById("startDate").value;
+    let endDate = document.getElementById("endDate").value;
+
+    // Display errors if fields are not filled in
+    if (startDate == "" || endDate == "") {
+      if (errorNameCall) {  // display name error
+        ui.scheduleTimeError();
+        errorNameCall = false;
+      }
+      if (errorDateCall) {  // display date error
+        ui.scheduleTimeError();
+        errorDateCall = false;
+      }
+
+      // remove errors individually
+      if (startDate != "" || endDate != "") ui.removeScheduleTimeError();
+
+    } else {
+      // card is completed without errors, reset card
+      calendarObject.addAvaliableTime(startDate, endDate);
+      ui.clearValues("schedule");
+      ui.hideCard(ui.scheduleCard);
+      ui.removeScheduleTimeError();
+      errorTimeCall = true;
+      editedSchedule = false;
+    }
+  })
+
   // When user clicks delete, close modal
-  deleteBtn.addEventListener("click", function () {
+  taskDeleteBtn.addEventListener("click", function () {
     deleteBtnAction();
-    ui.hideCard();
-    ui.clearValues();
+    ui.hideCard(ui.taskCard);
+    ui.clearValues("task");
   })
 
   // When the user clicks on <span> (x), close the modal
-  closeBtn.addEventListener("click", function () {
-    ui.hideCard();
-    ui.clearValues();
+  taskCloseBtn.addEventListener("click", function () {
+    ui.hideCard(ui.taskCard);
+    ui.clearValues("task");
+  })
+
+  scheduleCloseBtn.addEventListener("click", function () {
+    ui.hideCard(ui.scheduleCard);
+    ui.clearValues("schedule");
   })
 
   // When the presses ESCAPE, close the modal (task popup)
   window.onkeydown = function(evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
-          ui.hideCard();
-          ui.clearValues();
+          ui.hideCard(ui.taskCard);
+          ui.clearValues("task");
       }
   };
 
   // When the user clicks on (x), close the modal
-  closeBtn.addEventListener("click", function () {
-      ui.clearValues();
-      ui.hideCard();
+  taskCloseBtn.addEventListener("click", function () {
+      ui.clearValues("task");
+      ui.hideCard(ui.taskCard);
   })
 
   taskList.addEventListener('click', openTask);

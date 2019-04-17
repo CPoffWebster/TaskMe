@@ -1,15 +1,16 @@
 class UI{
 
     constructor(){
-        this.taskCard = document.querySelector('.modal');
+      this.taskCard = document.getElementById("taskCard")
+      this.scheduleCard = document.getElementById("scheduleCard")
     }
 
-    displayCard(){
-        this.taskCard.style.display = 'block';
+    displayCard(modal){
+        modal.style.display = 'block';
     }
 
-    hideCard(){
-        this.taskCard.style.display = 'none';
+    hideCard(modal){
+        modal.style.display = 'none';
     }
 
     addTaskToList(task, list, listElements){
@@ -25,12 +26,18 @@ class UI{
 
 
     // clear values in task card
-    clearValues() {
+    clearValues(modal) {
+      if (modal == "task"){
         document.getElementById("taskName").value = "";
         document.getElementById("dueDate").value = "";
         document.getElementById("urgency").value = "";
         document.querySelector(".hours").value = "";
         document.querySelector(".minutes").value = "";
+      }
+      else { 
+        document.getElementById("startDate").value = "";
+        document.getElementById("endDate").value = "";
+      }
     }
 
 
@@ -40,26 +47,35 @@ class UI{
 
     // name error call and remove
     nameError() {
-      document.getElementById("nameError").innerHTML = "<span style='color: red;'>Name Required.</span>";
+      document.getElementById("taskNameError").innerHTML = "<span style='color: red;'>Name Required.</span>";
     }
     removeNameError(){
-      document.getElementById("nameError").innerHTML = "";
+      document.getElementById("taskNameError").innerHTML = "";
     }
 
     // date error call and remove
     dateError(){
-      document.getElementById("dateError").innerHTML = "<span style='color: red;'>Due Date Required.</span>";
+      document.getElementById("taskDateError").innerHTML = "<span style='color: red;'>Due Date Required.</span>";
     }
     removeDateError(){
-      document.getElementById("dateError").innerHTML = "";
+      document.getElementById("taskDateError").innerHTML = "";
     }
 
     // time error call and remove
-    timeError(){
-      document.getElementById("timeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
+    removetimeError(){
+      document.getElementById("taskTimeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
     }
-    removeTimeError(){
-      document.getElementById("timeError").innerHTML = "";
+    removeDateError(){
+      document.getElementById("taskTimeError").innerHTML = "";
+    }
+    // schedule card time error call and remove
+    scheduleTimeError() {
+      document.getElementById("startDateError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
+      document.getElementById("endDateError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
+    }
+    removeScheduleTimeError() {
+      document.getElementById("startDateError").innerHTML = "";
+      document.getElementById("endDateError").innerHTML = "";
     }
 
 }

@@ -152,8 +152,10 @@ function loadEventListeners(){
   window.onkeydown = function(evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
-          ui.hideCard(ui.taskCard);
-          ui.clearValues("task");
+        ui.hideCard(ui.taskCard);
+        ui.clearValues("task");
+        ui.hideCard(ui.scheduleCard);
+        ui.clearValues("schedule");
       }
   };
 

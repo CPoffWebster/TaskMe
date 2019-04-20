@@ -5,14 +5,25 @@ var calendar;
 class Calendar {
     constructor(){
         calendarEl = document.getElementById('calendar');
-        
+
         calendar = new FullCalendar.Calendar(calendarEl, {
           plugins: [ 'dayGrid' , 'timeGrid', 'interaction', 'bootstrap', 'list', 'googleCalendar' ],
           displayEventTime: false,
           googleCalendarApiKey: 'AIzaSyC6BGMsXygokYtmC8Zz6D79l5kvQMYqE20',
-          events: {
-            googleCalendarId: 'ak6b7fl58t37sh9thfnucpr5qo@group.calendar.google.com'
-          },
+          /*events: {
+            googleCalendarId: 'ak6b7fl58t37sh9thfnucpr5qo@group.calendar.google.com',
+            color: 'yellow'
+          },*/
+          events: [
+            {
+              title: 'Event1',
+              start: '2019-04-20'
+            },
+            {
+              title: 'Event2',
+              start: '2019-04-21'
+            }
+          ],
           //events: 'en.usa#holiday@group.v.calendar.google.com',
           defaultView: 'timeGridWeek',
           themeSystem: 'standard',
@@ -59,6 +70,12 @@ class Calendar {
 
 document.addEventListener('DOMContentLoaded', function() {
     const calendarObject = new Calendar();
+    //alert("hi");
+    let testMe = calendar.getEventSources();
+    //eventSource.refetch(testMe);
+    console.log(testMe);
+
+
     //calendarObject.addAvaliableTime("2019-04-09", "07:00", "2019-04-09", "20:00");
     //calendarObject.addBusyTime("2019-04-08", "07:00", "2019-04-08", "20:00");
       });

@@ -88,14 +88,7 @@ function loadEventListeners(){
       } else {
         // card is completed without errors, reset card
         getValue();
-        ui.clearValues("task");
-        ui.hideCard(ui.taskCard);
-        ui.removeNameError();
-        ui.removeDateError();
-        ui.removeTimeError();
-        errorNameCall = true;
-        errorDateCall = true;
-        errorTimeCall = true;
+        clearTaskCard();
         editedTask = false;
       }
   })
@@ -139,8 +132,7 @@ function loadEventListeners(){
 
   // When the user clicks on <span> (x), close the modal
   taskCloseBtn.addEventListener("click", function () {
-    ui.hideCard(ui.taskCard);
-    ui.clearValues("task");
+    clearTaskCard();
   })
 
   scheduleCloseBtn.addEventListener("click", function () {
@@ -152,20 +144,25 @@ function loadEventListeners(){
   window.onkeydown = function(evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
-        ui.hideCard(ui.taskCard);
-        ui.clearValues("task");
+        clearTaskCard();
+
         ui.hideCard(ui.scheduleCard);
         ui.clearValues("schedule");
       }
   };
 
-  // When the user clicks on (x), close the modal
-  taskCloseBtn.addEventListener("click", function () {
-      ui.clearValues("task");
-      ui.hideCard(ui.taskCard);
-  })
-
   taskList.addEventListener('click', openTask);
+}
+
+function clearTaskCard(){
+  ui.hideCard(ui.taskCard);
+  ui.clearValues("task");
+  ui.removeNameError();
+  ui.removeDateError();
+  ui.removeTimeError();
+  errorNameCall = true;
+  errorDateCall = true;
+  errorTimeCall = true;
 }
 
 /*********************************************************************************

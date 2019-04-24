@@ -283,7 +283,7 @@ function openTask(e){
     taskIndex = searchTask(e.target, listElements);
     currentTask = tasks[taskIndex];
     currentTaskElement = e;
-    ui.displayCard();
+    ui.displayCard(ui.taskCard);
     setValue(currentTask);
     editedTask = true;
 }

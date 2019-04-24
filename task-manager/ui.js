@@ -67,9 +67,6 @@ class UI{
 
     // time error call and remove
     removeTimeError(){
-      document.getElementById("taskTimeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
-    }
-    removeDateError(){
       document.getElementById("taskTimeError").innerHTML = "";
     }
     // schedule card time error call and remove

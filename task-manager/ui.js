@@ -57,12 +57,16 @@ class UI{
     dateError(){
       document.getElementById("taskDateError").innerHTML = "<span style='color: red;'>Due Date Required.</span>";
     }
+    taskTimeError() {
+      document.getElementById("taskTimeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
+    }
+
     removeDateError(){
       document.getElementById("taskDateError").innerHTML = "";
     }
 
     // time error call and remove
-    removetimeError(){
+    removeTimeError(){
       document.getElementById("taskTimeError").innerHTML = "<span style='color: red;'>Expected Time Required.</span>";
     }
     removeDateError(){

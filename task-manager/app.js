@@ -76,7 +76,7 @@ function loadEventListeners(){
           errorDateCall = false;
         }
         if(errorTimeCall){  // display time error
-          ui.timeError();
+          ui.taskTimeError();
           errorDateCall = false;
         }
 

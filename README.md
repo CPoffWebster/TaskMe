@@ -1,6 +1,8 @@
-# Reminder_CS250
+# TaskMe
 
+Project Creators:
 Poff-Webster, Calder, Erwin-Stevens
 
 
-Reminder/Scheduler
+A calendar web-application using fullCalendar API.
+Ability to create tasks and schedule them into a calendar.

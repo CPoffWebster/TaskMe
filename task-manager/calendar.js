@@ -9,9 +9,9 @@ class Calendar {
         calendar = new FullCalendar.Calendar(calendarEl, {
           plugins: [ 'dayGrid' , 'timeGrid', 'interaction', 'bootstrap', 'list', 'googleCalendar' ],
           displayEventTime: false,
-          googleCalendarApiKey: 'AIzaSyC6BGMsXygokYtmC8Zz6D79l5kvQMYqE20',
+          //googleCalendarApiKey: 'insert here',
           /*events: {
-            googleCalendarId: 'ak6b7fl58t37sh9thfnucpr5qo@group.calendar.google.com',
+            googleCalendarId: 'insert here',
             color: 'yellow'
           },*/
           events: [
